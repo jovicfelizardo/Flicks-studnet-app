@@ -44,8 +44,8 @@ public class Movie {
     }
 
     public String getPosterpath() {
-        Log.d("URl","https://image.tmdb.org/t/p/w342" +posterpath);
-        return String.format("https://image.tmdb.org/t/p/w342"+posterpath);
+        Log.d("URl","https://image.tmdb.org/t/p/w342" + posterpath);
+        return String.format("https://image.tmdb.org/t/p/w342" + posterpath);
 
     }
 }
