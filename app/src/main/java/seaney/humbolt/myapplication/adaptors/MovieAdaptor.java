@@ -1,6 +1,7 @@
 package seaney.humbolt.myapplication.adaptors;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -26,6 +27,7 @@ public class MovieAdaptor extends RecyclerView.Adapter<MovieAdaptor.ViewHolder> 
         context = contextIn;
         movieList = movieListIn;
     }
+
 
     @NonNull
     @Override
@@ -62,8 +64,14 @@ public class MovieAdaptor extends RecyclerView.Adapter<MovieAdaptor.ViewHolder> 
         {
             Title.setText(movie.getTitle());
             Overview.setText(movie.getOverview());
-            Glide.with(context).load(movie.getPosterpath()).into(Portrate);
-
+            if (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
+            {
+                Glide.with(context).load(movie.getPosterpath()).into(Portrate);
+            }
+            else if (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
+            {
+                Glide.with(context).load(movie.getBackdrop_path()).into(Portrate);
+            }
         }
     }
 

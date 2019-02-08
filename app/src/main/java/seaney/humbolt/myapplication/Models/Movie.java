@@ -12,6 +12,7 @@ import java.util.List;
 public class Movie {
 
     private String posterpath,
+                   backdrop_path,
                    title,
                    overview;
 
@@ -20,6 +21,7 @@ public class Movie {
         posterpath = jsonObject.getString("poster_path");
         title = jsonObject.getString("title");
         overview = jsonObject.getString("overview");
+        backdrop_path = jsonObject.getString("backdrop_path");
     }
 
     public static List<Movie> returnJsonArray(JSONArray jsonMovieArry) throws JSONException
@@ -45,7 +47,12 @@ public class Movie {
 
     public String getPosterpath() {
         Log.d("URl","https://image.tmdb.org/t/p/w342" + posterpath);
-        return String.format("https://image.tmdb.org/t/p/w342" + posterpath);
+        return "https://image.tmdb.org/t/p/w342" + posterpath;
 
+    }
+
+    public String getBackdrop_path()
+    {
+        return "https://image.tmdb.org/t/p/w342" + backdrop_path;
     }
 }
