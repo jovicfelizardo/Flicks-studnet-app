@@ -16,6 +16,7 @@ import org.parceler.Parcels;
 
 import java.util.List;
 
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 import seaney.humbolt.myapplication.GlideApp;
 import seaney.humbolt.myapplication.Models.Movie;
 import seaney.humbolt.myapplication.MovieDetailActvity;
@@ -85,16 +86,23 @@ public class MovieAdaptor extends RecyclerView.Adapter<MovieAdaptor.ViewHolder> 
 
             Title.setText(movie.getTitle());
             Overview.setText(movie.getOverview());
+            int radius = 30; // corner radius, higher value = more rounded
+            int margin = 0; // crop margin, set to 0 for corners with no crop
             if (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
             {
                 GlideApp.with(context)
                         .load(movie.getPosterpath())
                         .placeholder(R.drawable.download)
+                        .transform(new RoundedCornersTransformation(radius, margin))
                         .into(Portrate);
             }
             else if (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
             {
-                GlideApp.with(context).load(movie.getBackdrop_path()).into(Portrate);
+                GlideApp.with(context)
+                        .load(movie.getBackdrop_path())
+                        .placeholder(R.drawable.download)
+                        .transform(new RoundedCornersTransformation(radius, margin))
+                        .into(Portrate);
             }
         }
     }
