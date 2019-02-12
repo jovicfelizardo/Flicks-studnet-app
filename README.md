@@ -34,7 +34,9 @@ below see current build.<br>
 <img src="https://i.imgur.com/CZi4IBs.gif" width=250><br>
 
 ### Notes
-I had a great deal fo trouble with the [Android Async HTTP] and Glide at first but now i understand at least the basics of their use. Mainly my issues stemed from not using the debugger to step through large issues 
+I had a great deal of trouble with the [Android Async HTTP] and Glide at first but now i understand at least the basics of their use. Mainly my issues stemmed from not using the debugger to step through large issues 
+
+edit : by far the hardest thing was adding genre information
 
 ### Open-source libraries used
 
