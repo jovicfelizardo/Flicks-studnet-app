@@ -89,7 +89,7 @@ public class MovieAdaptor extends RecyclerView.Adapter<MovieAdaptor.ViewHolder> 
             {
                 GlideApp.with(context)
                         .load(movie.getPosterpath())
-                        //.placeholder(new ColorDrawable(Color.GREEN))
+                        .placeholder(R.drawable.download)
                         .into(Portrate);
             }
             else if (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)

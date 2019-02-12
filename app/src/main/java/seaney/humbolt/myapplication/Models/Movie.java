@@ -20,7 +20,8 @@ public class Movie {
             Rating,
             totalvotes,
             releaseDate,
-            langOR;
+            langOR,
+            movieID;
 
     String[] genres;
 
@@ -40,6 +41,7 @@ public class Movie {
         totalvotes = jsonObject.getString("vote_count");
         genres = jsonObject.getString("genre_ids").split(",");
         langOR = jsonObject.getString("original_language");
+        movieID = jsonObject.getString("id");
 
     }
 
@@ -93,4 +95,11 @@ public class Movie {
     public String getLangOR() {return langOR;}
 
     public String getReleaseDate() {return releaseDate;}
+
+    public String getMovieID() {
+        Log.d("movie ID", "returning ID :" + movieID + " for movie " + title );
+        return movieID;
+    }
+
+
 }
