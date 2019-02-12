@@ -9,13 +9,14 @@
     tools:context=".MovieDetailActvity">
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <com.google.android.youtube.player.YouTubePlayerView
                 android:id="@+id/player"
@@ -46,25 +47,26 @@
                     style="@android:style/Widget.Holo.Light.RatingBar.Indicator"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:isIndicator="true"
                     android:numStars="10"
                     android:paddingRight="5dp"
                     android:rating="5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvGenres"
+                    app:layout_constraintTop_toBottomOf="@+id/tvMovieName"
                     tools:style="@android:style/Widget.Material.Light.RatingBar" />
 
                 <TextView
                     android:id="@+id/tvDiscription"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="4dp"
                     android:layout_marginEnd="8dp"
                     android:textColor="#ffffff"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvVotesTotal"
+                    app:layout_constraintStart_toStartOf="@+id/textView3"
+                    app:layout_constraintTop_toBottomOf="@+id/textView3"
                     tools:text="discript" />
 
                 <TextView
@@ -74,7 +76,7 @@
                     android:layout_marginStart="8dp"
                     android:text="Rated "
                     android:textColor="#ffffff"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/rbRating"
                     app:layout_constraintTop_toBottomOf="@+id/rbRating"
                     tools:text="Votes : 34563" />
 
@@ -84,7 +86,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    android:text="Release information"
+                    android:text="Release information :"
                     android:textColor="#ffffff"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvDiscription"
@@ -95,10 +97,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="4dp"
                     android:text="Date : "
                     android:textColor="#ffffff"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/textView6"
                     app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
                 <TextView
@@ -108,18 +110,17 @@
                     android:layout_marginStart="8dp"
                     android:text="Original Language : "
                     android:textColor="#ffffff"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/textView6"
                     app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
                 <TextView
                     android:id="@+id/tvDateOfRelase"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
                     android:text="02/05/09"
                     android:textColor="#ffffff"
                     app:layout_constraintStart_toEndOf="@+id/textView7"
-                    app:layout_constraintTop_toBottomOf="@+id/textView6" />
+                    app:layout_constraintTop_toTopOf="@+id/textView7" />
 
                 <TextView
                     android:id="@+id/tvLangOR"
@@ -130,25 +131,40 @@
                     app:layout_constraintTop_toBottomOf="@+id/tvDateOfRelase"
                     tools:text="English" />
 
-                <Button
-                    android:id="@+id/backButton"
-                    style="@android:style/Widget.Holo.Light.Button.Toggle"
+                <TextView
+                    android:id="@+id/tvGenres"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:text="Loading Genre Information"
+                    android:textColor="#ffffff"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView2"
+                    app:layout_constraintTop_toTopOf="@+id/textView2" />
+
+                <TextView
+                    android:id="@+id/textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    android:text="Back"
+                    android:text="Genres : "
+                    android:textColor="#ffffff"
+                    android:textSize="14sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView9" />
+                    app:layout_constraintTop_toBottomOf="@+id/tvVotesTotal" />
 
                 <TextView
-                    android:id="@+id/tvGenres"
+                    android:id="@+id/textView3"
                     android:layout_width="wrap_content"
-                    android:textColor="#ffffff"
                     android:layout_height="wrap_content"
-                    android:text="Loading Genre Information"
-                    app:layout_constraintStart_toStartOf="@+id/tvMovieName"
-                    app:layout_constraintTop_toBottomOf="@+id/tvMovieName" />
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="2dp"
+                    android:text="Overview :"
+                    android:textColor="#ffffff"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
             </android.support.constraint.ConstraintLayout>
 

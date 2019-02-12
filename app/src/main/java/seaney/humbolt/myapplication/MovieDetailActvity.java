@@ -2,7 +2,6 @@ package seaney.humbolt.myapplication;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -51,12 +50,12 @@ public class MovieDetailActvity extends YouTubeBaseActivity {
         tvCount.setText("Votes : " + movie.getVotesTotal());
         tvLangOR.setText(movie.getLangOR());
 
-        bttnBack.setOnClickListener(new View.OnClickListener() {
+        /*bttnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
-        });
+        });*/
 
         AsyncHttpClient client = new AsyncHttpClient();
 
@@ -121,7 +120,7 @@ public class MovieDetailActvity extends YouTubeBaseActivity {
         tvCount = findViewById(R.id.tvVotesTotal);
         tvLangOR = findViewById(R.id.tvLangOR);
         tvDateOr = findViewById(R.id.tvDateOfRelase);
-        bttnBack = findViewById(R.id.backButton);
+        //bttnBack = findViewById(R.id.backButton);
         ytView = findViewById(R.id.player);
         tvGenres = findViewById(R.id.tvGenres);
 
