@@ -26,12 +26,13 @@ Flix is an app that allows users to browse movies from the [The Movie Database A
   - [x] Less popular videos rely on the detailed page should show an image preview that can initiate playing a YouTube video. 
 - [ ] Apply the popular ButterKnife annotation library to reduce view boilerplate. (1 point) **TODO**
 - [x] Add a rounded corners for the images using the Glide transformations. (1 point) 
+- [x] (EXTRA) added genre infermation for each movie by calling the TMDB api again to find the list of all genres based on genre code.
 
 ### App Walkthough GIF
 First pass,<br>
 <img src="https://i.imgur.com/R80KFhG.gif" width=250><br>
 below see current build.<br>
-<img src="https://i.imgur.com/CZi4IBs.gif" width=250><br>
+<img src="https://i.imgur.com/WoiBdz0.gif" width=250><br>
 
 ### Notes
 I had a great deal of trouble with the [Android Async HTTP] and Glide at first but now i understand at least the basics of their use. Mainly my issues stemmed from not using the debugger to step through large issues 
