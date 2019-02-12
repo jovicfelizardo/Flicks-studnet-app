@@ -10,17 +10,20 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-
 import java.util.List;
 
+import seaney.humbolt.myapplication.GlideApp;
 import seaney.humbolt.myapplication.Models.Movie;
 import seaney.humbolt.myapplication.R;
+
+
+
 
 public class MovieAdaptor extends RecyclerView.Adapter<MovieAdaptor.ViewHolder> {
 
     Context context;
     List<Movie> movieList;
+
 
     public MovieAdaptor(Context contextIn, List<Movie> movieListIn)
     {
@@ -66,11 +69,14 @@ public class MovieAdaptor extends RecyclerView.Adapter<MovieAdaptor.ViewHolder> 
             Overview.setText(movie.getOverview());
             if (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
             {
-                Glide.with(context).load(movie.getPosterpath()).into(Portrate);
+                GlideApp.with(context)
+                        .load(movie.getPosterpath())
+                        //.placeholder(new ColorDrawable(Color.GREEN))
+                        .into(Portrate);
             }
             else if (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
             {
-                Glide.with(context).load(movie.getBackdrop_path()).into(Portrate);
+                GlideApp.with(context).load(movie.getBackdrop_path()).into(Portrate);
             }
         }
     }

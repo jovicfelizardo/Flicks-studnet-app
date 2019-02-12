@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private String movieUrl = "https://api.themoviedb.org/3/movie/now_playing?api_key="+API_KEY;
 
 
+
     List<Movie> DownloadedMovies;
 
     @Override
