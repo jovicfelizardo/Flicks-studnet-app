@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -56,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
                     DownloadedMovies.addAll(Movie.returnJsonArray(jMoveArray));
                     Log.d("tag_Example",DownloadedMovies.toString());
                     movieAdaptor.notifyDataSetChanged();
-                    Toast.makeText(MainActivity.this, "Database is excesable", Toast.LENGTH_SHORT).show();
                 }
                 catch(JSONException e)
                 {
