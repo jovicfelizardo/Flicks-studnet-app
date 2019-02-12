@@ -2,43 +2,60 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/clLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#091C23">
 
-    <ImageView
-        android:id="@+id/idPoster"
-        android:layout_width="120dp"
+    <RelativeLayout
+        android:id="@+id/rlLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
-
-    <TextView
-        android:id="@+id/idTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="6dp"
-        android:textColor="#ffffff"
-        android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/idPoster"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="Movie Title" />
-
-    <TextView
-        android:id="@+id/idOvervew"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="viewStart"
-        android:textColor="#ffffff"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/idPoster"
-        app:layout_constraintTop_toBottomOf="@+id/idTitle"
-        tools:text="Movie discript" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/idTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="6dp"
+            android:layout_toEndOf="@+id/idPoster"
+            android:textColor="#ffffff"
+            android:textSize="24sp"
+            app:layout_constraintStart_toEndOf="@+id/idPoster"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Movie Title" />
+
+        <ImageView
+            android:id="@+id/idPoster"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/idOvervew"
+            android:layout_width="265dp"
+            android:layout_height="179dp"
+            android:layout_below="@+id/idTitle"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="7dp"
+            android:layout_toEndOf="@+id/idPoster"
+            android:textAlignment="viewStart"
+            android:textColor="#ffffff"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/idPoster"
+            app:layout_constraintTop_toBottomOf="@+id/idTitle"
+            tools:text="Movie discript" />
+    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private String API_KEY = "a07e22bc18f5cb106bfe4cc1f83ad8ed";
 
     private String movieUrl = "https://api.themoviedb.org/3/movie/now_playing?api_key="+API_KEY;
+    private String GenraCodes = "https://api.themoviedb.org/3/genre/movie/list?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US";
 
 
 
