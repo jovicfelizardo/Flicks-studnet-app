@@ -144,6 +144,7 @@
                 <TextView
                     android:id="@+id/tvGenres"
                     android:layout_width="wrap_content"
+                    android:textColor="#ffffff"
                     android:layout_height="wrap_content"
                     android:text="TextView"
                     app:layout_constraintStart_toStartOf="@+id/tvMovieName"

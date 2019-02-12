@@ -127,23 +127,24 @@ public class MovieDetailActvity extends YouTubeBaseActivity {
 
     }
 
-    public void populateGenre(JSONArray genres, String[] genreCodes) throws JSONException
-    {
+    public void populateGenre(JSONArray genres, String[] genreCodes) throws JSONException {
 
 
         String ToSet = "";
-        for (int i = 0; i < genreCodes.length; i++)
-        {
+        for (int i = 0; i < genreCodes.length; i++) {
+
             int GenreId = Integer.parseInt(genreCodes[i]);
-            for (int j = 0; j < genres.length(); j++)
-            {
-                if (genres.getJSONObject(j).getInt("id") == GenreId)
-                {
-                    ToSet.concat(genres.getJSONObject(j).getString("name"));
+
+            for (int j = 0; j < genres.length(); j++) {
+                if (genres.getJSONObject(j).getInt("id") == GenreId) {
+                    ToSet = ToSet + genres.getJSONObject(j).getString("name") + ",    ";
                 }
             }
+        }
+        if (ToSet == "") {
+            tvGenres.setText("No genres found");
+        } else {
             tvGenres.setText(ToSet);
-
         }
     }
 }
