@@ -44,7 +44,7 @@ public class MovieDetailActvity extends YouTubeBaseActivity {
         initViews();
 
 
-        Movie movie = (Movie) Parcels.unwrap(getIntent().getParcelableExtra("movie"));
+        final Movie movie = (Movie) Parcels.unwrap(getIntent().getParcelableExtra("movie"));
         tvName.setText(movie.getTitle());
         tvDiscription.setText(movie.getOverview());
         rbRating.setRating(Float.parseFloat(movie.getRating()));
@@ -74,7 +74,7 @@ public class MovieDetailActvity extends YouTubeBaseActivity {
                     {
                         JSONObject trailer = results.getJSONObject(0);
                         final String youtubeKey = trailer.getString("key");
-                        initYoutube(youtubeKey);
+                        initYoutube(youtubeKey,(Float.parseFloat(movie.getRating()) > 5));
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -88,12 +88,16 @@ public class MovieDetailActvity extends YouTubeBaseActivity {
 
     }
 
-    private void initYoutube(final String youtubeKey) {
+    private void initYoutube(final String youtubeKey, final boolean pop) {
         ytView.initialize(GOOGLE_API, new YouTubePlayer.OnInitializedListener() {
             @Override
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
                 Log.d("youtube", "we did it");
-                youTubePlayer.cueVideo(youtubeKey);
+                if (pop) {
+                    youTubePlayer.loadVideo(youtubeKey);
+                } else {
+                    youTubePlayer.cueVideo(youtubeKey);
+                }
             }
 
             @Override
