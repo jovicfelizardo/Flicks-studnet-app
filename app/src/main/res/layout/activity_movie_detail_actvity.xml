@@ -51,7 +51,7 @@
                     android:paddingRight="5dp"
                     android:rating="5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvMovieName"
+                    app:layout_constraintTop_toBottomOf="@+id/tvGenres"
                     tools:style="@android:style/Widget.Material.Light.RatingBar" />
 
                 <TextView
@@ -140,6 +140,14 @@
                     android:text="Back"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+                <TextView
+                    android:id="@+id/tvGenres"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    app:layout_constraintStart_toStartOf="@+id/tvMovieName"
+                    app:layout_constraintTop_toBottomOf="@+id/tvMovieName" />
 
             </android.support.constraint.ConstraintLayout>
 
