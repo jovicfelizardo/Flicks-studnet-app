@@ -32,7 +32,7 @@ Flix is an app that allows users to browse movies from the [The Movie Database A
 First pass,
 <img src="https://i.imgur.com/R80KFhG.gif" width=250><br>
 below see current build.
-<img scr="https://i.imgur.com/CZi4IBs.gif" width=250><br>
+<img src="https://i.imgur.com/CZi4IBs.gif" width=250><br>
 
 ### Notes
 I had a great deal fo trouble with the [Android Async HTTP] and Glide at first but now i understand at least the basics of their use. 
