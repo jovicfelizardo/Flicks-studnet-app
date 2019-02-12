@@ -39,9 +39,13 @@ public class Movie {
         backdrop_path = jsonObject.getString("backdrop_path");
         Rating = jsonObject.getString("vote_average");
         totalvotes = jsonObject.getString("vote_count");
-        genres = jsonObject.getString("genre_ids").split(",");
         langOR = jsonObject.getString("original_language");
         movieID = jsonObject.getString("id");
+
+        // fuck this part for real, why in the world would they
+        genres = jsonObject.getString("genre_ids").split(",");
+        genres[0] = genres[0].substring(1);
+        genres[genres.length - 1] = genres[genres.length - 1].substring(0,genres[genres.length -1].length() - 1);
 
     }
 

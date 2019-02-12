@@ -29,10 +29,10 @@ public class MovieDetailActvity extends YouTubeBaseActivity {
 
 
     TextView tvName;
-    TextView tvDiscription, tvCount, tvLangOR, tvContryOR, tvDateOr;
+    TextView tvDiscription, tvCount, tvLangOR, tvContryOR, tvDateOr, tvGenres;
     RatingBar rbRating;
     Button bttnBack;
-    JSONObject jsGens;
+    JSONArray jsGens;
     YouTubePlayerView ytView;
     //List<Movie> DownloadedMovies;
 
@@ -48,8 +48,9 @@ public class MovieDetailActvity extends YouTubeBaseActivity {
         tvName.setText(movie.getTitle());
         tvDiscription.setText(movie.getOverview());
         rbRating.setRating(Float.parseFloat(movie.getRating()));
-        tvCount.setText("Votes : "+ movie.getVotesTotal());
+        tvCount.setText("Votes : " + movie.getVotesTotal());
         tvLangOR.setText(movie.getLangOR());
+
         bttnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,22 +60,18 @@ public class MovieDetailActvity extends YouTubeBaseActivity {
 
         AsyncHttpClient client = new AsyncHttpClient();
 
-        client.get(String.format(TRAILER_API_REQUEST,movie.getMovieID()), new JsonHttpResponseHandler()
-        {
+        client.get(String.format(TRAILER_API_REQUEST, movie.getMovieID()), new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
                 try {
                     JSONArray results = response.getJSONArray("results");
-                    if (results.length() == 0)
-                    {
+                    if (results.length() == 0) {
                         return;
-                    }
-                    else
-                    {
+                    } else {
                         JSONObject trailer = results.getJSONObject(0);
                         final String youtubeKey = trailer.getString("key");
-                        initYoutube(youtubeKey,(Float.parseFloat(movie.getRating()) > 5));
+                        initYoutube(youtubeKey, (Float.parseFloat(movie.getRating()) > 5));
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -82,8 +79,17 @@ public class MovieDetailActvity extends YouTubeBaseActivity {
             }
         });
 
-
-
+        client.get(GenraCodes, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+                try {
+                    populateGenre(response.getJSONArray("genres"), movie.getGenres());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
 
     }
@@ -117,31 +123,28 @@ public class MovieDetailActvity extends YouTubeBaseActivity {
         tvDateOr = findViewById(R.id.tvDateOfRelase);
         bttnBack = findViewById(R.id.backButton);
         ytView = findViewById(R.id.player);
+        tvGenres = findViewById(R.id.tvGenres);
 
     }
 
-    public void populateData()
-    {
-        Movie moveContiner = (Movie) Parcels.unwrap(getIntent().getParcelableExtra("movie"));
-        tvName.setText(moveContiner.getTitle());
-        tvDiscription.setText(moveContiner.getOverview());
-        rbRating.setRating(Float.parseFloat(moveContiner.getRating()));
-        tvCount.setText("Votes : "+ moveContiner.getVotesTotal());
+    public void populateGenre(JSONArray genres, String[] genreCodes) throws JSONException {
 
-        /*String[] temp = moveContiner.getGenres();
+
         String ToSet = "";
-        for (int i = 0; i < temp.length; i++ )
-        {
-            try {
-                ToSet.concat(jsGens.getString(temp[i]) + ", ");
-            }
-            catch (JSONException e)
-            {
-                //cry
+        for (int i = 0; i < genreCodes.length; i++) {
+
+            int GenreId = Integer.parseInt(genreCodes[i]);
+
+            for (int j = 0; j < genres.length(); j++) {
+                if (genres.getJSONObject(j).getInt("id") == GenreId) {
+                    ToSet = ToSet + genres.getJSONObject(j).getString("name") + ",    ";
+                }
             }
         }
-        tvContryOR.setText(ToSet);*/
-
+        if (ToSet == "") {
+            tvGenres.setText("No genres found");
+        } else {
+            tvGenres.setText(ToSet);
+        }
     }
-
 }
